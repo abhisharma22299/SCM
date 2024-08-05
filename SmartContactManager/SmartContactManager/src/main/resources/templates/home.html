@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="base::Layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title >this is  home page </title>
+</head>
+<body>
+	
+	<section class="banner d-flex justify-content-center align-items-center">
+		
+		<div class="text-center">
+			<h1 class="font-weight-bold">Smart Contaact Manager</h1>
+			<p>Elevate your contact management experience – Welcome to a smarter way 
+				to connect, communicate, and conquer with our intuitive Smart Contact Manager</p>
+			<button class="btn bg-primary btn-lg text-white">
+				<a  th:href="@{/signin/}" id="getStrated"class="text-white" href="#">Get Started</a>
+				
+			</button>
+		</div>
+	
+	</section>
+
+</body>
+</html>

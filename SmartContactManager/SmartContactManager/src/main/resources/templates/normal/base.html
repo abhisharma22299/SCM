@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:fragment="Layout(content)">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<!-- for auto icons  https://cdnjs.com/libraries/font-awesome-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/
+font-awesome/6.4.2/css/all.min.css" 
+integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+    <title th:text="${tittle}">Base Html</title>
+  </head>
+  <body>
+     <!-- NavBar -->
+     <nav class="fixed-top navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" th:href="@{index}"href="#">Smart Contact Manager</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+    <ul class="navbar-nav ml-auto text-uppercase">
+      
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/user/index}" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      
+      
+      <li class="nav-item ">
+        <a class="nav-link  text-white" href="#">About</a>
+      </li>
+      
+      
+      
+      
+      <li class="nav-item">
+        <a   href="#" style="border-radius: 50px;" th:href="@{/user/profile}" 
+        
+         class= " btn btn-primary text-white font-weight-bold " th:text="${user.name}"></a>
+      
+      </li>
+      
+      
+      <li class="nav-item">
+        <a style="border-radius: 50px;" class="btn btn-danger  text-white " th:href="@{/logout}" href="#" >Logout</a>
+      
+      </li>
+    </ul>
+
+  </div>
+</nav>
+
+
+ <!-- End navbar-->
+ <!-- Side bar -->
+<div class="sidebar">
+	<span onclick="toggleSidebar()" class="crossBnt mt-3"><i class="fa-solid fa-xmark"></i>
+	</span>
+	<br />
+	 
+<a href="#"  th:href="@{/user/index}"class="item"> <i class="fa-solid fa-house"></i> Home</a>
+<a href="#"th:href="@{/user/show-contact}" class="item"><i class="fa-solid fa-address-book"></i> View Contact</a>
+<a href="#" th:href="@{/user/add-contact}" class="item"><i class="fa-solid fa-pen"></i> Add Contact</a>
+<a href="#" th:href="@{/user/profile}" class="item"><i class="fa-solid fa-user"></i> Your Profile</a>
+<a href="#" th:href="@{/user/add-contact}" class="item"><i class="fa-solid fa-sliders"></i> Setting</a>	
+<a  href="#" th:href="@{/logout}" class="item"><i  class="fa-solid fa-right-from-bracket"></i> <span id="logoutHover">Logout</span></a>	
+<div class="divider">
+	
+</div>
+</div>
+ <!-- End Side bar -->
+ <!-- Content field -->	
+<div class="content mt-5">
+	
+	<i 	onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+		<div th:replace="${content}"></div>
+	
+</div>
+
+ <!--END Content field -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+ <script th:src="@{/js/script.js}"></script>
+ 		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+		<script>https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js</script>
+<script>
+function deleteContact(CId){
+		swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this Contact!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+  {
+     window.location="/user/delete/"+CId; 
+    }
+  } else {
+    swal("Your Contact is Save");
+  }
+});
+	}
+</script>	
+  </body>
+</html>

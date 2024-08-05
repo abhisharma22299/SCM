@@ -1,0 +1,100 @@
+
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org" th:replace="normal/base::Layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>This is about page</title>
+</head>
+<body>
+	<section>
+		
+		<div class="container">
+			
+			<div class="card">
+					<div class="container text-center">
+						<br />
+						<br />
+							<img  name="imageurl" style="width: 200px; height: 200px; border-radius: 250px;border:3px solid gray ;"
+						 id="contact_profile_picture"      th:src="@{'/img/'+${user.imageurl}}"       src="" alt="" />
+					<br />
+
+
+
+
+                        <br />
+					<h2><span  th:text="${user.name}"></span></h2>
+						</div>
+					<br />
+				
+				<div class="card-body ">
+					
+							
+					<table class="table mt-1 mL-8">
+  <thead >
+    <tr>
+      <th scope="col">#USERID</th>
+      <th scope="col" >
+		  <span th:text="${'SMCUSER'+user.id}"></span>
+	  </th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Email</th>
+      <td><span th:text="${user.email}"></span></td>
+   
+    </tr>
+  
+  </tbody>
+  
+  <thead >
+    <tr>
+      <th scope="col">Role</th>
+      <th scope="col" >
+		  <span th:text="${user.role}"></span>
+	  </th>
+     
+    </tr>
+  </thead>
+  <thead >
+    <tr>
+      <th scope="col">About</th>
+      <th scope="col" >
+		  <span th:text="${user.about}"></span>
+	  </th>
+     
+    </tr>
+  </thead>
+  <thead >
+    <tr>
+      <th scope="col">Account Status</th>
+      <th scope="col" >
+		  <span >Active</span>
+	  </th>
+     
+    </tr>
+  </thead>
+   
+
+</table>
+				</div>
+			</div>
+
+
+            <br>
+            <br>
+            <br>
+		</div>
+        <script>
+            $(document).ready(() =>  {
+            $('.item').removeClass('active');
+            $('#profile-link').addClass("active");
+            });
+        </script>
+
+	</section>
+	
+</body>
+</html>
